@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.LandingPage {
+  background: rgb(34, 87, 122);
+  background: linear-gradient(24deg, rgba(34, 87, 122, 1) 0%, rgba(56, 163, 165, 1) 35%, rgba(87, 204, 153, 1) 79%, rgba(128, 237, 153, 1) 100%);
+  background-size: cover;
+}
+
+
+
+
+.typewriter-holder {
+  width: 280px;
+  position: relative;
+  display: block;
+  margin: auto;
+}
+
+.typewriter-holder p {
+  position: absolute;
+  left: 0;
+
+  font-weight: bold;
+  font-size: 20px;
+}
