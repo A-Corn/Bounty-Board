@@ -9,7 +9,7 @@ const InterviewSchema = new mongoose.Schema({ //creating a model for the intervi
     },
     companyName : {
         type: String,
-        required: [true, "Company name is required"],
+        required: [true, "Company name is required"]
     },
     interviewDate : {
         type: String,
