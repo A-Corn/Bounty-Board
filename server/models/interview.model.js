@@ -7,8 +7,13 @@ const InterviewSchema = new mongoose.Schema({ //creating a model for the intervi
     interviewerTitle : {
         type: String
     },
+    companyName : {
+        type: String,
+        required: [true, "Company name is required"],
+    },
     interviewDate : {
-        type: String
+        type: String,
+        required: [true, "Interview date is required"]
     },
     email : {
         type: String
