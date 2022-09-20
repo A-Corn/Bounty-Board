@@ -1,5 +1,11 @@
+html,body,.App,#root{
+  height:100%;
+}
 .App {
   text-align: center;
+background-color: #1363DF;
+font-family: 'Montserrat', sans-serif;
+
 }
 
 .App-logo {
@@ -59,4 +65,27 @@
 
   font-weight: bold;
   font-size: 20px;
+}
+
+/* Submission Form */
+.font{
+  color: #06283D;
+}
+
+.container{
+  width:30%;
+}
+.b-color{
+  background-color: #DFF6FF;
+  color:#1363DF;
+}
+/* Nav Bar */
+.nav{
+  background-color: #47B5FF; 
+  padding-top: 4px; 
+  padding-bottom: 4px;
+}
+.nav-link{
+width:300px;
+color: #06283D;
 }
