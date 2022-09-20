@@ -40,17 +40,17 @@ const Login = () => {
                                                 placeholder="Email address" 
                                                 onChange={(e) => setEmail(e.target.value)}/>
                                         </div>
-                                        <div class="form-outline mb-4">
+                                        <div className="form-outline mb-4">
                                             <input type="password" id="form2Example22" class="form-control"
                                                 placeholder="Enter your password"  
                                                 onChange={(e) => setPassword(e.target.value)}/>
                                         </div>
-                                        <div class="text-center pt-1 mb-5 pb-1">
+                                        <div className="text-center pt-1 mb-5 pb-1">
                                             <button className="btn btn-primary" type="button">Login</button>
                                         </div>
-                                        <div class="d-flex align-items-center justify-content-center pb-4">
-                                            <p class="mb-0 me-2">Don't have an account?</p>
-                                            <button class="btn btn-outline-danger" >Create new</button>
+                                        <div className="d-flex align-items-center justify-content-center pb-4">
+                                            <p className="mb-0 me-2">Don't have an account?</p>
+                                            <button className="btn btn-outline-danger" >Create new</button>
                                         </div>
                                     </form>
                                 </div>
