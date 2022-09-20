@@ -33,7 +33,7 @@ const Login = () => {
                             <div className='col-lg-6'>
                                 <div className='card-body p-md-5 mx-md-4'>
                                     <h1 className='mt-1 mb-5 pb-1'> Bounty Board</h1>
-                                    <form onClick={handleSubmit}>
+                                    <form onSubmit={handleSubmit}>
                                         <p> Please login to you account </p>
                                         <div className='form-outline mb-4'>
                                             <input type="email" id="form2Example11" class="form-control"
@@ -46,7 +46,7 @@ const Login = () => {
                                                 onChange={(e) => setPassword(e.target.value)}/>
                                         </div>
                                         <div className="text-center pt-1 mb-5 pb-1">
-                                            <button className="btn btn-primary" type="button">Login</button>
+                                            <button className="btn btn-primary" type="submit">Login</button>
                                         </div>
                                         <div className="d-flex align-items-center justify-content-center pb-4">
                                             <p className="mb-0 me-2">Don't have an account?</p>
