@@ -12,7 +12,7 @@ const Login = () => {
         e.preventDefault();
         setErr("");
         const postData = { email, password };
-        axios.post("". postData, {
+        axios.post("http://localhost:8000/api/login". postData, {
             withCredentials: true,
         })
         .then((res) => {
