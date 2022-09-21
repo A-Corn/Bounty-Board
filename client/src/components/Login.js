@@ -8,21 +8,21 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [err, setErr] = useState("");
 
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
         setErr("");
         const postData = { email, password };
-        axios.post("http://localhost:8000/api/login". postData, {
+        axios.post("http://localhost:8000/api/login", postData, {
             withCredentials: true,
         })
         .then((res) => {
             console.log(res);
-            navigate("/networking");
+            navigate("/interviews");
         })
         .catch((err) => console.log(err));
     };
 
-    const navigate = useNavigate();
 
     return (
         <div className='container py-5 h-100'>
@@ -36,21 +36,21 @@ const Login = () => {
                                     <form onSubmit={handleSubmit}>
                                         <p> Please login to you account </p>
                                         <div className='form-outline mb-4'>
-                                            <input type="email" id="form2Example11" class="form-control"
+                                            <input type="email" id="form2Example11" className="form-control"
                                                 placeholder="Email address" 
                                                 onChange={(e) => setEmail(e.target.value)}/>
                                         </div>
                                         <div className="form-outline mb-4">
-                                            <input type="password" id="form2Example22" class="form-control"
+                                            <input type="password" id="form2Example22" className="form-control"
                                                 placeholder="Enter your password"  
                                                 onChange={(e) => setPassword(e.target.value)}/>
                                         </div>
                                         <div className="text-center pt-1 mb-5 pb-1">
-                                            <button className="btn btn-primary" type="submit">Login</button>
+                                            <button className="btn btn-primary">Login</button>
                                         </div>
                                         <div className="d-flex align-items-center justify-content-center pb-4">
                                             <p className="mb-0 me-2">Don't have an account?</p>
-                                            <button className="btn btn-outline-danger" >Create new</button>
+                                            <button onClick={()=>navigate('/signup')} className="btn btn-outline-danger" >Create new</button>
                                         </div>
                                     </form>
                                 </div>

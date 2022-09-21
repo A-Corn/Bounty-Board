@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "bootswatch/dist/superhero/bootstrap.min.css";
+import './components/bootstrap.min.css';
 import './App.css';
 import LandingPage from "./components/LandingPage";
 import SubmissionForm from "./components/Submissions/SubmissionForm";

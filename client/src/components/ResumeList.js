@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 
-const ResumeList = props => {
+const ResumeList = (props) => {
 
     const [submissions, setSubmissions] = useState([]);
 
@@ -10,24 +10,24 @@ const ResumeList = props => {
         setSubmissions(submissions.filter(submission => submission._id != resumeID));
     }
 
-    useEffect( () => {
+    useEffect(() => {
         axios.get('http://localhost:8000/api/submissions')
-        .then( res => {
-            console.log(res.data);
+        .then((res) => {
+            console.log('resdata',res.data);
             setSubmissions(res.data);
         })
-        .catch( err => {
+        .catch((err) => {
             console.log(err);
         })
     }, [])
 
-    const deleteSubmission = resumeID => {
+    const deleteSubmission = (resumeID) => {
         axios.delete(`http://localhost:8000/api/submissions/${resumeID}`)
-        .then( res => {
+        .then((res) => {
             console.log(res)
             removeFromDom(resumeID)
         })
-        .catch( err => console.log(err));
+        .catch(err => console.log(err));
     }
 
     return(
