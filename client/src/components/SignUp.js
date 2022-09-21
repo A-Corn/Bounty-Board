@@ -19,8 +19,8 @@ const SignUp = () => {
         }
         try{
             await axios.post('http://localhost:8000/api/register', userData);
-            navigate('/') 
-            //ADD CONNECTION AFTER AMIR PUSHES LOGIN
+            navigate('/login') 
+            
             
         }catch(error){
             console.log(error)
@@ -82,7 +82,7 @@ const SignUp = () => {
                                             <button className="btn btn-primary">Sign Up</button>
                                         </div>
                                         <div className="d-flex align-items-center justify-content-center pb-4">
-                                            <Link className="mb-0 me-2">Already Registered? - Login</Link>
+                                            <Link to='/login' className="mb-0 me-2">Already Registered? - Login</Link>
                                         </div>
                                     </form>
                                 </div>
