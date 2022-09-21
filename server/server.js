@@ -19,6 +19,8 @@ app.use(cookieParser());
 require('./config/mongoose.config');
 require('./routes/resume.routes')(app);
 require('./routes/user.routes')(app);
+require('./routes/interview.routes')(app);
+require('./routes/networking.routes')(app);
 
 app.listen(PORT, () => {
     console.log(`The server is all ready to go on port ${PORT}`)
