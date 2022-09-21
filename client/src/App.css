@@ -2,7 +2,7 @@ html,body,.App,#root{
   height:100%;
 }
 .App {
-  text-align: center;
+text-align: center;
 background-color: #1363DF;
 font-family: 'Montserrat', sans-serif;
 
@@ -88,4 +88,11 @@ font-family: 'Montserrat', sans-serif;
 .nav-link{
 width:300px;
 color: #06283D;
+}
+.logo{
+  border-radius: 70%;
+}
+/* Submission Table */
+.box{
+  
 }

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Submission = () => {
     // const { id } = useParams();
     const [allSubmissions, setSubmissions] = useState([]);
-    // useEffect keeps our axios call from re-rendering 
+    // useEffect keeps our axios call from re-rendering
     useEffect(() => {
         axios.get("http://localhost:8000/api/submissions")
             // ⬇api returns back as an promise⬇
@@ -23,32 +23,33 @@ const Submission = () => {
     return (
         <div>
             <>
-                {/* {
-                    allSubmissions.map((submission, id) => {
-                        return (
-                            <table key={submission.id}className="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Company</th>
-                                        <th scope="col">Position</th>
-                                        <th scope="col">Contact</th>
-                                        <th scope="col">Date Applied</th>
-                                        <th scope="col">Next Step</th>
-                                    </tr>
-                                </thead>
-                                <tbody >
-                                    <tr>
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Company</th>
+                            <th scope="col">Position</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">Date Applied</th>
+                            <th scope="col">Next Step</th>
+                        </tr>
+                    </thead>
+                    {
+                        allSubmissions?.map((submission, idx) => {
+                            return (
+                                <tbody>
+                                    <tr key={submission._id}>
                                         <td>{submission.company}</td>
                                         <td>{submission.position}</td>
                                         <td>{submission.contact}</td>
                                         <td>{submission.date}</td>
                                         <td>{submission.nextStep}</td>
                                     </tr>
+                                    
                                 </tbody>
-                            </table>
-                        );
+                );
                     })
-                } */}
+                }
+                </table>
                 <Link to="/api/add/submissions">
                     <button className="btn btn-primary mb-5">Add New Subscription</button>
                 </Link>
