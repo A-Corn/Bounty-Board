@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 const Submission = () => {
     // const { id } = useParams();
-    const [allSubmissions, setSubmissions] = useState([]);
+    const [ allSubmissions, setSubmissions] = useState([]);
     // useEffect keeps our axios call from re-rendering
     useEffect(() => {
         axios.get("http://localhost:8000/api/submissions")
@@ -33,27 +33,29 @@ const Submission = () => {
                             <th scope="col">Next Step</th>
                         </tr>
                     </thead>
-                    {
-                        allSubmissions?.map((submission, idx) => {
-                            return (
-                                <tbody>
-                                    <tr key={submission._id}>
-                                        <td>{submission.company}</td>
-                                        <td>{submission.position}</td>
-                                        <td>{submission.contact}</td>
-                                        <td>{submission.date}</td>
-                                        <td>{submission.nextStep}</td>
-                                    </tr>
-                                    
-                                </tbody>
-                );
-                    })
-                }
+                <tbody>
+                    { allSubmissions?.map((submission, index) => {
+                        return(
+                            <tr key={submission._id}>
+                                <td>{submission.company}</td>
+                                <td>{submission.position}</td>
+                                <td>{submission.contact}</td>
+                                <td>{submission.date}</td>
+                                <td>{submission.nextStep}</td>
+                                {/* <td>
+                                    <Link to={`/edit_submission/${submission._id}`}>
+                                        <button>Edit</button>
+                                    </Link>
+                                    <button onClick={ e => {deleteSubmission(submission._id)}}>Delete</button>
+                                </td> */}
+                            </tr>
+                        )
+                    })}
+                    </tbody> 
                 </table>
                 <Link to="/api/add/submissions">
                     <button className="btn btn-primary mb-5">Add New Subscription</button>
                 </Link>
-
             </>
         </div>
     );

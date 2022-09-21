@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import axios from 'axios';
+import axios from "axios";
 
-const SubmissionForm = () => {
+const NetworkingForm = () => {
     let [Company, setCompany] = useState("");
     let [Position, setPosition] = useState("");
     let [Contact, setContact] = useState("");
@@ -14,7 +14,7 @@ const SubmissionForm = () => {
         // Package up form infomation
         let formInfo = { Company, Position,Contact, DateApplied, NextStep }
 
-        axios.post("http://localhost:8000/api/add/submissions", formInfo)
+        axios.post("http://localhost:8000/api/network_form", formInfo)
             .then(res => {
                 console.log("this means I'm working", res)
             })
@@ -28,7 +28,7 @@ const SubmissionForm = () => {
     }
     return (
         <div>
-            <h2 className='header pt-5 font'>New Resume Submission</h2>
+            <h2 className='header pt-5 font'>New Contact</h2>
             <div className="container mt-5 ">
                 <form onSubmit={submitForm}>
                     <div className="mb-3">
@@ -78,7 +78,7 @@ const SubmissionForm = () => {
                     </div>
                     
                     <button type="submit" className="btn btn-light mb-5 b-color">
-                        Add Submission
+                        Add New Contact
                     </button>
                 </form>
             </div>
@@ -86,4 +86,5 @@ const SubmissionForm = () => {
     );
 };
 
-export default SubmissionForm;
+
+export default NetworkingForm;
