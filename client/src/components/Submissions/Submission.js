@@ -2,10 +2,11 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Navbar from '../Navbar';
 // import { useParams } from 'react-router-dom';
 const Submission = () => {
     // const { id } = useParams();
-    const [ allSubmissions, setSubmissions] = useState([]);
+    const [ allSubmissions, setAllSubmissions] = useState([]);
     // useEffect keeps our axios call from re-rendering
     useEffect(() => {
         axios.get("http://localhost:8000/api/submissions")
@@ -13,7 +14,7 @@ const Submission = () => {
             .then(res => {
                 console.log("response: ", res)
                 // Saving results array of objects into state
-                setSubmissions(res.data.results)
+                setAllSubmissions(res.data)
             })
             .catch(err => {
                 console.log("error", err)
@@ -22,6 +23,7 @@ const Submission = () => {
 
     return (
         <div>
+            <Navbar/>
             <>
                 <table className="table table-striped">
                     <thead>
@@ -34,9 +36,8 @@ const Submission = () => {
                         </tr>
                     </thead>
                 <tbody>
-                    { allSubmissions?.map((submission, index) => {
-                        return(
-                            <tr key={submission._id}>
+                    { allSubmissions.map((submission, index) => {
+                        return<tr key={submission._id}>
                                 <td>{submission.company}</td>
                                 <td>{submission.position}</td>
                                 <td>{submission.contact}</td>
@@ -49,7 +50,7 @@ const Submission = () => {
                                     <button onClick={ e => {deleteSubmission(submission._id)}}>Delete</button>
                                 </td> */}
                             </tr>
-                        )
+                        
                     })}
                     </tbody> 
                 </table>

@@ -2,9 +2,11 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-const networking = () => {
+import Navbar from '../Navbar';
+const Networking = () => {
     return (
         <div>
+            <Navbar/>
             <table className="table table-striped">
                     <thead>
                         <tr>
@@ -24,4 +26,4 @@ const networking = () => {
 };
 
 
-export default networking;
+export default Networking;
