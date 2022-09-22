@@ -11,17 +11,14 @@ import InterviewForms from "./components/Interviews/InterviewForms";
 import SignUp from "./components/SignUp";
 import Interviews from "./components/Interviews";
 import Login from "./components/Login";
-import ResumeList from "./components/ResumeList";
+import EditSubmission from "./components/Submissions/EditSubmission";
 import Navbar from "./components/Navbar";
 
 
 function App() {
   return (
     <div className="App">
-      
-            
-      <BrowserRouter>
-              
+      <BrowserRouter>          
         <Routes>
           <Route path="/" element={<LandingPage />}/>
           <Route path="/submissions" element={<Submission />}/>
@@ -33,7 +30,7 @@ function App() {
           <Route path='/signup' element={<SignUp/>}/>
           <Route path='/interviews' element={<Interviews/>}/>
           <Route path="/login" element={<Login />}/>
-          
+          <Route path="/submissions/edit/:id" element={<EditSubmission />}/>
         </Routes>
       </BrowserRouter>
     </div>

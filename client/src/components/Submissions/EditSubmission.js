@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
-const SubmissionForm = () => {
+const EditSubmission = () => {
+    const {id} = useParams();
     const [company, setCompany] = useState("");
     const [position, setPosition] = useState("");
     const [contact, setContact] = useState("");
@@ -10,15 +11,28 @@ const SubmissionForm = () => {
     const [nextStep, setNextStep] = useState("");
     const navigate = useNavigate();
 
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/submissions/${id}`)
+        .then( res => {
+            console.log(res.data);
+            setCompany(res.data.company);
+            setPosition(res.data.position);
+            setContact(res.data.contact);
+            setDate(res.data.date);
+            setNextStep(res.data.nextStep);
+        })
+        .catch( err => console.log(err))
+    }, [])
+
     // Submit handler
-    const submitForm = (e) => {
+    const editSubmission = (e) => {
 
         e.preventDefault();
 
         // Package up form infomation
         let formInfo = { company, position, contact, date, nextStep }
 
-        axios.post("http://localhost:8000/api/add/submissions", formInfo)
+        axios.put("http://localhost:8000/api/submissions/edit/" + id, formInfo)
             .then(res => {
                 console.log("this means I'm working", res)
                 navigate('/submissions')
@@ -28,9 +42,9 @@ const SubmissionForm = () => {
     
     return (
         <div>
-            <h2 className='header pt-5 font'>New Resume Submission</h2>
+            <h2 className='header pt-5 font'>Edit Resume Submission</h2>
             <div className="container mt-5 ">
-                <form onSubmit={submitForm}>
+                <form onSubmit={editSubmission}>
                     <div className="mb-3">
                         <label className="form-label "> </label>
                         <input
@@ -78,7 +92,7 @@ const SubmissionForm = () => {
                     </div>
                     
                     <button className="btn btn-light mb-5 b-color">
-                        Add Submission
+                        Update Submission
                     </button>
                 </form>
             </div>
@@ -86,4 +100,4 @@ const SubmissionForm = () => {
     );
 };
 
-export default SubmissionForm;
+export default EditSubmission;
