@@ -43,7 +43,8 @@ const Interviewers = () => {
                 <thead>
                     <tr>
                         <th>Interviewer Name/Title</th>
-                        <th>Interview Date</th>
+                        <th>Interview Date</th> 
+                        <th>Company Name</th> 
                         <th>Email Contact</th>
                         <th>Phone Number</th>
                         <th colSpan={2}>Actions</th>
@@ -51,16 +52,19 @@ const Interviewers = () => {
                 </thead>
                 <tbody>
                 
-                    {/* //each item in map is interview name, date, email, phone */}
+                    {/* //each item in map is interview name, date, company name, email, phone */}
                         {
                             interviewList.map((item, index)=> {
                                 return <tr key={item._id}>
                                         <td>{item.interviewerName}, {item.interviewerTitle}</td>
                                         <td>{item.interviewDate}</td>
+                                        <td>{item.companyName}</td>
                                         <td>{item.email}</td>
                                         <td>{item.phoneNumber}</td>
                                         <td>
-                                            <button className='btn btn-success'>Edit Info</button>
+                                            <Link to={`/interviews/edit/${item._id}`}>
+                                                <button className='btn btn-success'>Edit Info</button>
+                                            </Link>
                                             <button onClick={()=>{handleDelete(`${item._id}`)}} className='btn btn-danger mx-2'>Delete</button>
                                         </td>
                                 </tr>

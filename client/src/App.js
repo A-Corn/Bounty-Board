@@ -12,6 +12,8 @@ import SignUp from "./components/SignUp";
 import Interviews from "./components/Interviews";
 import Login from "./components/Login";
 import EditSubmission from "./components/Submissions/EditSubmission";
+import EditContact from "./components/Networking/EditNetworking";
+import EditInterview from "./components/Interviews/EditInterview";
 import Navbar from "./components/Navbar";
 
 
@@ -31,6 +33,8 @@ function App() {
           <Route path='/interviews' element={<Interviews/>}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/submissions/edit/:id" element={<EditSubmission />}/>
+          <Route path="/network_contact/edit/:id" element={<EditContact />}/>
+          <Route path="/interviews/edit/:id" element={<EditInterview />}/>
         </Routes>
       </BrowserRouter>
     </div>
