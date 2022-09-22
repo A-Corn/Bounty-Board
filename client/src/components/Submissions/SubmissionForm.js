@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const SubmissionForm = () => {
     let [Company, setCompany] = useState("");
@@ -8,15 +9,17 @@ const SubmissionForm = () => {
     let [DateApplied, setDateApplied] = useState("");
     let [NextStep, setNextStep] = useState("");
 
+    const navigate=useNavigate();
     // Submit handler
     const submitForm = (e) => {
-
+        e.preventDefault();
         // Package up form infomation
         let formInfo = { Company, Position,Contact, DateApplied, NextStep }
 
         axios.post("http://localhost:8000/api/add/submissions", formInfo)
-            .then(res => {
+            .then((res) => {
                 console.log("this means I'm working", res)
+                navigate('/submissions')
             })
             .catch(err => console.log("error", err))
         // Clear out form information after  submitting the form 
