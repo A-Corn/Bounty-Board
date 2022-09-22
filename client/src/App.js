@@ -9,7 +9,7 @@ import NetworkingForm from "./components/Networking/NetworkingForm";
 import Interviewers from "./components/Interviews/Interviewers";
 import InterviewForms from "./components/Interviews/InterviewForms";
 import SignUp from "./components/SignUp";
-import Interviews from "./components/Interviews";
+
 import Login from "./components/Login";
 import EditSubmission from "./components/Submissions/EditSubmission";
 import EditContact from "./components/Networking/EditNetworking";
@@ -30,7 +30,7 @@ function App() {
           <Route path="/interviews" element={<Interviewers/>} />
           <Route path="/interview_form" element={<InterviewForms/>} />
           <Route path='/signup' element={<SignUp/>}/>
-          <Route path='/interviews' element={<Interviews/>}/>
+          
           <Route path="/login" element={<Login />}/>
           <Route path="/submissions/edit/:id" element={<EditSubmission />}/>
           <Route path="/network_contact/edit/:id" element={<EditContact />}/>
