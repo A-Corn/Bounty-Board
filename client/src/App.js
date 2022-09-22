@@ -9,19 +9,18 @@ import NetworkingForm from "./components/Networking/NetworkingForm";
 import Interviewers from "./components/Interviews/Interviewers";
 import InterviewForms from "./components/Interviews/InterviewForms";
 import SignUp from "./components/SignUp";
-import Interviews from "./components/Interviews";
+
 import Login from "./components/Login";
-import ResumeList from "./components/ResumeList";
+import EditSubmission from "./components/Submissions/EditSubmission";
+import EditContact from "./components/Networking/EditNetworking";
+import EditInterview from "./components/Interviews/EditInterview";
 import Navbar from "./components/Navbar";
 
 
 function App() {
   return (
     <div className="App">
-      
-            
-      <BrowserRouter>
-              
+      <BrowserRouter>          
         <Routes>
           <Route path="/" element={<LandingPage />}/>
           <Route path="/submissions" element={<Submission />}/>
@@ -31,9 +30,11 @@ function App() {
           <Route path="/interviews" element={<Interviewers/>} />
           <Route path="/interview_form" element={<InterviewForms/>} />
           <Route path='/signup' element={<SignUp/>}/>
-          <Route path='/interviews' element={<Interviews/>}/>
-          <Route path="/login" element={<Login />}/>
           
+          <Route path="/login" element={<Login />}/>
+          <Route path="/submissions/edit/:id" element={<EditSubmission />}/>
+          <Route path="/network_contact/edit/:id" element={<EditContact />}/>
+          <Route path="/interviews/edit/:id" element={<EditInterview />}/>
         </Routes>
       </BrowserRouter>
     </div>

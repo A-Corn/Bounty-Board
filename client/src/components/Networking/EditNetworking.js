@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
-const NetworkingForm = () => {
+const EditContact = () => {
+    const {id} = useParams();
     const [contactName, setContactName] = useState("");
     const [contactTitle, setContactTitle] = useState("");
     const [event, setEvent] = useState("");
@@ -10,13 +11,26 @@ const NetworkingForm = () => {
     const [contactInfo, setContactInfo] = useState("");
     const navigate = useNavigate();
 
+    useEffect(() => {
+    axios.get(`http://localhost:8000/api/network_contacts/${id}`)
+        .then( res => {
+            console.log(res.data);
+            setContactName(res.data.contactName);
+            setContactTitle(res.data.contactTitle);
+            setEvent(res.data.event);
+            setCompanyName(res.data.companyName);
+            setContactInfo(res.data.contactInfo);
+        })
+        .catch( err => console.log(err))
+    }, [])
+
     // Submit handler
-    const submitForm = (e) => {
+    const editContact = (e) => {
         e.preventDefault();
         // Package up form infomation
         let formInfo = { contactName, contactTitle, event, companyName, contactInfo }
 
-        axios.post("http://localhost:8000/api/network_contacts", formInfo)
+        axios.put("http://localhost:8000/api/network_contacts/edit/" + id, formInfo)
             .then(res => {
                 console.log("this means I'm working", res)
                 navigate('/network_contacts');
@@ -27,7 +41,7 @@ const NetworkingForm = () => {
         <div>
             <h2 className='header pt-5 font'>New Contact</h2>
             <div className="container mt-5 ">
-                <form onSubmit={submitForm}>
+                <form onSubmit={editContact}>
                     <div className="mb-3">
                         <label className="form-label "> </label>
                         <input
@@ -75,7 +89,7 @@ const NetworkingForm = () => {
                     </div>
                     
                     <button className="btn btn-light mb-5 b-color">
-                        Add New Contact
+                        Update Contact
                     </button>
                 </form>
             </div>
@@ -84,4 +98,4 @@ const NetworkingForm = () => {
 };
 
 
-export default NetworkingForm;
+export default EditContact;

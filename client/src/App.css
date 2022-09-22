@@ -20,12 +20,12 @@ font-family: 'Montserrat', sans-serif;
 }
 
 a {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
 a:hover {
-  color: blue;
+  color: red;
 }
 
 @keyframes App-logo-spin {

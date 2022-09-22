@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "axios";
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
-const InterviewForms = () => {
+const EditInterview = () => {
+    const {id} = useParams();
     const navigate = useNavigate();
     const [interviewerName, setInterviewerName] = useState("");
     const [interviewerTitle, setInterviewerTitle] = useState("");
@@ -11,11 +12,25 @@ const InterviewForms = () => {
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
 
-    const submitForm = (e) => {
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/interviews/${id}`)
+            .then( res => {
+                console.log(res.data);
+                setInterviewerName(res.data.interviewerName);
+                setInterviewerTitle(res.data.interviewerTitle);
+                setCompanyName(res.data.companyName);
+                setInterviewDate(res.data.interviewDate);
+                setEmail(res.data.email);
+                setPhoneNumber(res.data.phoneNumber);
+            })
+            .catch( err => console.log(err))
+        }, [])
+
+    const editInterview = (e) => {
         e.preventDefault();
         const formInfo = { interviewerName, interviewerTitle, companyName, interviewDate, email, phoneNumber }
         
-        axios.post("http://localhost:8000/api/interviews", formInfo)
+        axios.put("http://localhost:8000/api/interviews/edit/" + id, formInfo)
             .then((res) => {
                 console.log("this means I'm working", res.data)
                 navigate('/interviews')
@@ -23,20 +38,13 @@ const InterviewForms = () => {
             .catch((err) => {
                 console.log(err)
             })
-        // Clear out form information after  submitting the form 
-        setInterviewerName("");
-        setInterviewerTitle("");
-        setCompanyName("");
-        setInterviewDate("");
-        setEmail("");
-        setPhoneNumber("");
         }
 
     return (
         <div>
             <div className="container mt-5 ">
                 <h2>New Interview</h2>
-                <form onSubmit={submitForm}>
+                <form onSubmit={editInterview}>
                     <div className="mb-3">
                         <label className="form-label ">Interviewer Name </label>
                         <input
@@ -85,7 +93,7 @@ const InterviewForms = () => {
                             value={phoneNumber}
                         />
                     </div>
-                    <button className="btn btn-light mb-5 b-color">Add New Interview</button>
+                    <button className="btn btn-light mb-5 b-color">Update Interview</button>
                 </form>
                 <Link to='/interviews'>Back to Interview List</Link>
             </div>
@@ -93,4 +101,4 @@ const InterviewForms = () => {
     );
 };
 
-export default InterviewForms;
+export default EditInterview;
