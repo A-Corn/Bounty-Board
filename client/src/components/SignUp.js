@@ -19,7 +19,7 @@ const SignUp = () => {
         }
         try{
             await axios.post('http://localhost:8000/api/register', userData);
-            navigate('/interviews') 
+            navigate('/login') 
             
             
         }catch(error){

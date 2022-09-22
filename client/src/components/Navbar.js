@@ -1,5 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom';
+import Logout from './Logout';
 
 const Navbar = () => {
     return (
@@ -12,6 +13,7 @@ const Navbar = () => {
                 <NavLink to='/submissions'>Submissions</NavLink>
                 <NavLink to='/interviews'>Interviews</NavLink>
                 <NavLink to='/network_contacts'>Networking</NavLink>
+                <Logout/>
             </div>
 
         </div>
