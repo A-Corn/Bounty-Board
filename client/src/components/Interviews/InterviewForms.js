@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 const InterviewForms = () => {
     const navigate = useNavigate();
@@ -36,12 +36,10 @@ const InterviewForms = () => {
         <div>
             <div className="container mt-5 ">
                 <h2>New Interview</h2>
-
                 <form onSubmit={submitForm}>
                     <div className="mb-3">
                         <label className="form-label ">Interviewer Name </label>
                         <input
-                            
                             className="form-control "
                             onChange={(e) => setInterviewerName(e.target.value)}
                             value={interviewerName}
@@ -50,7 +48,6 @@ const InterviewForms = () => {
                     <div className="mb-3">
                         <label className="form-label">Interviewer Title </label>
                         <input
-                            
                             className="form-control"
                             onChange={(e) => setInterviewerTitle(e.target.value)}
                             value={interviewerTitle}
@@ -59,7 +56,6 @@ const InterviewForms = () => {
                     <div className="mb-3">
                         <label className="form-label">Company Name </label>
                         <input
-                            
                             className="form-control"
                             onChange={(e) => setCompanyName(e.target.value)}
                             value={companyName}
@@ -68,7 +64,6 @@ const InterviewForms = () => {
                     <div className="mb-3">
                         <label className="form-label">Interview Date </label>
                         <input
-                            
                             className="form-control"
                             onChange={(e) => setInterviewDate(e.target.value)}
                             value={interviewDate}
@@ -77,7 +72,6 @@ const InterviewForms = () => {
                     <div className="mb-3">
                         <label className="form-label">Email </label>
                         <input
-                            
                             className="form-control"
                             onChange={(e) => setEmail(e.target.value)}
                             value={email}
@@ -86,17 +80,14 @@ const InterviewForms = () => {
                     <div className="mb-3">
                         <label className="form-label">Phone Number </label>
                         <input
-                            
                             className="form-control"
                             onChange={(e) => setPhoneNumber(e.target.value)}
                             value={phoneNumber}
                         />
                     </div>
-                    
-                    <button className="btn btn-light mb-5 b-color">
-                        Add New Interview
-                    </button>
+                    <button className="btn btn-light mb-5 b-color">Add New Interview</button>
                 </form>
+                <Link to='/interviews'>Back to Interview List</Link>
             </div>
         </div>
     );
