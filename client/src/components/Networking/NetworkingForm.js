@@ -12,7 +12,6 @@ const NetworkingForm = () => {
 
     // Submit handler
     const submitForm = (e) => {
-
         e.preventDefault();
         // Package up form infomation
         let formInfo = { contactName, contactTitle, event, companyName, contactInfo }
@@ -24,7 +23,6 @@ const NetworkingForm = () => {
             })
             .catch(err => console.log("error", err))
     }
-    
     return (
         <div>
             <h2 className='header pt-5 font'>New Contact</h2>

@@ -2,11 +2,11 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-// import { useParams } from 'react-router-dom';
-const Submission = () => {
-    // const { id } = useParams();
-    const [ allSubmissions, setAllSubmissions] = useState([]);
+import Navbar from '../Navbar';
 
+const Submission = () => {
+    const [ allSubmissions, setAllSubmissions] = useState([]);
+    
     const removeFromDom = resumeID => {
         setAllSubmissions(allSubmissions.filter(submission => submission._id != resumeID));
     }
@@ -35,6 +35,8 @@ const Submission = () => {
 
     return (
         <div>
+            <Navbar/>
+
             <>
                 <table className="table table-striped">
                     <thead>

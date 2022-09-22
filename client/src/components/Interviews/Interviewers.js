@@ -1,28 +1,78 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-const interviewers = () => {
+import { Link, useNavigate } from "react-router-dom";
+import Navbar from '../Navbar';
+
+const Interviewers = () => {
+    const navigate = useNavigate();
+    const [interviewList, setInterviewList] = useState([]);
+
+    useEffect(()=> {
+        axios.get('http://localhost:8000/api/interviews')
+            .then((res)=> {
+                console.log('resdata', res.data)
+                setInterviewList(res.data)
+            })
+            .catch((error)=> {
+                console.log(error)
+            })
+    }, [])
+
+
+    const handleDelete = (interviewId) => {
+        axios.delete(`http://localhost:8000/api/interviews/${interviewId}`)
+        .then((res)=> {
+            const newInterviewList = interviewList.filter((singleInterview)=> {
+                return singleInterview._id !== interviewId
+            })
+            setInterviewList(newInterviewList);
+        })
+        .catch((error)=> {
+            console.log('Could not delete', error)
+        })
+    }
+
+    
+
+
     return (
-        <div>
-            <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Company</th>
-                            <th scope="col">Position</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">Date Applied</th>
-                            <th scope="col">Next Step</th>
-                        </tr>
+        <div className='container w-75 border border-dark m-3 mx-auto'>
+            <Navbar/>
+            <table className='table table-striped'>
+                <thead>
+                    <tr>
+                        <th>Interviewer Name/Title</th>
+                        <th>Interview Date</th>
+                        <th>Email Contact</th>
+                        <th>Phone Number</th>
+                        <th colSpan={2}>Actions</th>
+                    </tr>
                 </thead>
+                <tbody>
+                
+                    {/* //each item in map is interview name, date, email, phone */}
+                        {
+                            interviewList.map((item, index)=> {
+                                return <tr key={item._id}>
+                                        <td>{item.interviewerName}, {item.interviewerTitle}</td>
+                                        <td>{item.interviewDate}</td>
+                                        <td>{item.email}</td>
+                                        <td>{item.phoneNumber}</td>
+                                        <td>
+                                            <button className='btn btn-success'>Edit Info</button>
+                                            <button onClick={()=>{handleDelete(`${item._id}`)}} className='btn btn-danger mx-2'>Delete</button>
+                                        </td>
+                                </tr>
+                            })
+                        }
+                </tbody>
             </table>
-                <Link to='/interview_form'>
-                    <button className="btn btn-primary mb-5">Add New Interview</button>
-                </Link>
+            <button onClick={()=>navigate('/interview_form')}>Add New Interview</button>
         </div>
     );
 };
 
-interviewers.propTypes = {};
+// interviewers.propTypes = {};
 
-export default interviewers;
+export default Interviewers;

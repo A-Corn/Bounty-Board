@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Navbar from '../Navbar';
 
 const Networking = () => {
 
@@ -35,6 +36,7 @@ const Networking = () => {
 
     return (
         <div>
+            <Navbar/>
             <table className="table table-striped">
                     <thead>
                         <tr>

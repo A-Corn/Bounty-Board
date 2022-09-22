@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import './components/bootstrap.min.css';
 import './App.css';
 import LandingPage from "./components/LandingPage";
@@ -12,30 +12,13 @@ import SignUp from "./components/SignUp";
 import Interviews from "./components/Interviews";
 import Login from "./components/Login";
 import EditSubmission from "./components/Submissions/EditSubmission";
+import Navbar from "./components/Navbar";
 
 
 function App() {
   return (
     <div className="App">
-            
-            <ul className = "nav navbar-expand lg nav-tabs justify-content-center nav-justified " >
-                <div className = "logo pt-2 bg-light" >
-                  <a href="" className="navbar-brand pt-2"> Bounty Board</a>
-                </div>
-              < li className = "nav-item">
-                <a className="nav-link"  data-toggle="tab" href='/submissions'>Submissions</a>
-              </li>
-              < li className = "nav-item" >
-                <a className="nav-link" data-toggle="tab" href='/interviews'>Interviews</a>
-              </li>
-              < li className = "nav-item" >
-                <a className="nav-link" data-toggle="tab" href='/network_contacts'>Networking</a>
-              </li>
-              < li className = "nav-item" >
-                <a className="nav-link" data-toggle="tab"  href='/logout'>Logout</a>
-              </li>
-            </ul>
-      <BrowserRouter>
+      <BrowserRouter>          
         <Routes>
           <Route path="/" element={<LandingPage />}/>
           <Route path="/submissions" element={<Submission />}/>

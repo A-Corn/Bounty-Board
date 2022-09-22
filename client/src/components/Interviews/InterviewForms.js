@@ -1,81 +1,100 @@
 import React, { useState } from 'react'
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const InterviewForms = () => {
-            let [Company, setCompany] = useState("");
-            let [Position, setPosition] = useState("");
-            let [Contact, setContact] = useState("");
-            let [DateApplied, setDateApplied] = useState("");
-            let [NextStep, setNextStep] = useState("");
+    const navigate = useNavigate();
+    const [interviewerName, setInterviewerName] = useState("");
+    const [interviewerTitle, setInterviewerTitle] = useState("");
+    const [companyName, setCompanyName] = useState("");
+    const [interviewDate, setInterviewDate] = useState("");
+    const [email, setEmail] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+
     const submitForm = (e) => {
-        let formInfo = { Company, Position, Contact, DateApplied, NextStep }
+        e.preventDefault();
+        const formInfo = { interviewerName, interviewerTitle, companyName, interviewDate, email, phoneNumber }
         
-        axios.post("http://localhost:8000/api/interview_form", formInfo)
-            .then(res => {
-                console.log("this means I'm working", res)
+        axios.post("http://localhost:8000/api/interviews", formInfo)
+            .then((res) => {
+                console.log("this means I'm working", res.data)
+                navigate('/interviews')
             })
-            .catch(err => console.log("error", err))
+            .catch((err) => {
+                console.log(err)
+            })
         // Clear out form information after  submitting the form 
-        setCompany("");
-        setPosition("");
-        setContact("");
-        setDateApplied("");
-        setNextStep("");
+        setInterviewerName("");
+        setInterviewerTitle("");
+        setCompanyName("");
+        setInterviewDate("");
+        setEmail("");
+        setPhoneNumber("");
         }
+
     return (
         <div>
             <div className="container mt-5 ">
-                            <h2>New Interview</h2>
+                <h2>New Interview</h2>
 
                 <form onSubmit={submitForm}>
                     <div className="mb-3">
-                        <label className="form-label "> </label>
+                        <label className="form-label ">Interviewer Name </label>
                         <input
-                            placeholder='Company'
+                            
                             className="form-control "
-                            onChange={(e) => setCompany(e.target.value)}
-                            value={Company}
+                            onChange={(e) => setInterviewerName(e.target.value)}
+                            value={interviewerName}
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label"> </label>
+                        <label className="form-label">Interviewer Title </label>
                         <input
-                            placeholder='Position'
+                            
                             className="form-control"
-                            onChange={(e) => setPosition(e.target.value)}
-                            value={Position}
+                            onChange={(e) => setInterviewerTitle(e.target.value)}
+                            value={interviewerTitle}
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label"> </label>
+                        <label className="form-label">Company Name </label>
                         <input
-                            placeholder='Contact'
+                            
                             className="form-control"
-                            onChange={(e) => setContact(e.target.value)}
-                            value={Contact}
+                            onChange={(e) => setCompanyName(e.target.value)}
+                            value={companyName}
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label"> </label>
+                        <label className="form-label">Interview Date </label>
                         <input
-                            placeholder='Date Applied'
+                            
                             className="form-control"
-                            onChange={(e) => setDateApplied(e.target.value)}
-                            value={DateApplied}
+                            onChange={(e) => setInterviewDate(e.target.value)}
+                            value={interviewDate}
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label"> </label>
+                        <label className="form-label">Email </label>
                         <input
-                            placeholder='Next Step'
+                            
                             className="form-control"
-                            onChange={(e) => setNextStep(e.target.value)}
-                            value={NextStep}
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Phone Number </label>
+                        <input
+                            
+                            className="form-control"
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            value={phoneNumber}
                         />
                     </div>
                     
-                    <button type="submit" className="btn btn-light mb-5 b-color">
-                        Add New Contact
+                    <button className="btn btn-light mb-5 b-color">
+                        Add New Interview
                     </button>
                 </form>
             </div>
