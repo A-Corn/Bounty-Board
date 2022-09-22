@@ -1,31 +1,30 @@
 import React, { useState } from 'react'
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const NetworkingForm = () => {
-    let [Company, setCompany] = useState("");
-    let [Position, setPosition] = useState("");
-    let [Contact, setContact] = useState("");
-    let [DateApplied, setDateApplied] = useState("");
-    let [NextStep, setNextStep] = useState("");
+    const [contactName, setContactName] = useState("");
+    const [contactTitle, setContactTitle] = useState("");
+    const [event, setEvent] = useState("");
+    const [companyName, setCompanyName] = useState("");
+    const [contactInfo, setContactInfo] = useState("");
+    const navigate = useNavigate();
 
     // Submit handler
     const submitForm = (e) => {
 
+        e.preventDefault();
         // Package up form infomation
-        let formInfo = { Company, Position,Contact, DateApplied, NextStep }
+        let formInfo = { contactName, contactTitle, event, companyName, contactInfo }
 
-        axios.post("http://localhost:8000/api/network_form", formInfo)
+        axios.post("http://localhost:8000/api/network_contacts", formInfo)
             .then(res => {
                 console.log("this means I'm working", res)
+                navigate('/network_contacts');
             })
             .catch(err => console.log("error", err))
-        // Clear out form information after  submitting the form 
-        setCompany("");
-        setPosition("");
-        setContact("");
-        setDateApplied("");
-        setNextStep("");
     }
+    
     return (
         <div>
             <h2 className='header pt-5 font'>New Contact</h2>
@@ -34,50 +33,50 @@ const NetworkingForm = () => {
                     <div className="mb-3">
                         <label className="form-label "> </label>
                         <input
-                            placeholder='Company'
+                            placeholder='Contact Name'
                             className="form-control "
-                            onChange={(e) => setCompany(e.target.value)}
-                            value={Company}
+                            onChange={(e) => setContactName(e.target.value)}
+                            value={contactName}
                         />
                     </div>
                     <div className="mb-3">
                         <label className="form-label"> </label>
                         <input
-                            placeholder='Position'
+                            placeholder='Contact Title'
                             className="form-control"
-                            onChange={(e) => setPosition(e.target.value)}
-                            value={Position}
+                            onChange={(e) => setContactTitle(e.target.value)}
+                            value={contactTitle}
                         />
                     </div>
                     <div className="mb-3">
                         <label className="form-label"> </label>
                         <input
-                            placeholder='Contact'
+                            placeholder='Event Met At'
                             className="form-control"
-                            onChange={(e) => setContact(e.target.value)}
-                            value={Contact}
+                            onChange={(e) => setEvent(e.target.value)}
+                            value={event}
                         />
                     </div>
                     <div className="mb-3">
                         <label className="form-label"> </label>
                         <input
-                            placeholder='Date Applied'
+                            placeholder='Company'
                             className="form-control"
-                            onChange={(e) => setDateApplied(e.target.value)}
-                            value={DateApplied}
+                            onChange={(e) => setCompanyName(e.target.value)}
+                            value={companyName}
                         />
                     </div>
                     <div className="mb-3">
                         <label className="form-label"> </label>
                         <input
-                            placeholder='Next Step'
+                            placeholder='Contact Info'
                             className="form-control"
-                            onChange={(e) => setNextStep(e.target.value)}
-                            value={NextStep}
+                            onChange={(e) => setContactInfo(e.target.value)}
+                            value={contactInfo}
                         />
                     </div>
                     
-                    <button type="submit" className="btn btn-light mb-5 b-color">
+                    <button className="btn btn-light mb-5 b-color">
                         Add New Contact
                     </button>
                 </form>

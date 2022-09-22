@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-const networking = () => {
+const interviewers = () => {
     return (
         <div>
             <table className="table table-striped">
@@ -16,12 +16,13 @@ const networking = () => {
                         </tr>
                 </thead>
             </table>
-                <Link to='/api/network_form'>
-                    <button className="btn btn-primary mb-5">Add New Contact</button>
+                <Link to='/interview_form'>
+                    <button className="btn btn-primary mb-5">Add New Interview</button>
                 </Link>
         </div>
     );
 };
 
+interviewers.propTypes = {};
 
-export default networking;
+export default interviewers;
