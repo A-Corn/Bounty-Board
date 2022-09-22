@@ -58,7 +58,7 @@ const Networking = () => {
                                 <td>{contact.companyName}</td>
                                 <td>{contact.contactInfo}</td>
                                 <td>
-                                    <Link to={`/edit_network_contact/${contact._id}`}>
+                                    <Link to={`/network_contact/edit/${contact._id}`}>
                                         <button>Edit</button>
                                     </Link>
                                     <button onClick={ e => {deleteContact(contact._id)}}>Delete</button>
