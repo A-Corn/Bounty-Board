@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const SignUp = () => {
@@ -30,37 +30,37 @@ const SignUp = () => {
     }
 
     return (
-        <div className='container py-5 h-100'>
+        <div className='container py-5 h-100 w-100'>
             <div className='row d-flex justify-content-center align-items-center h-100'>
                 <div className='col-xl-10'>
-                    <div className='card rounded-3 text-black'>
+                    <div className='card rounded-3 text-white'>
                         <div className='row g-0'>
-                            <div className='col-lg-6 d-flex align-items-center' style={{ background: "linear-gradient(24deg, rgba(34, 87, 122, 1) 0%, rgba(56, 163, 165, 1) 35%, rgba(87, 204, 153, 1) 79%, rgba(128, 237, 153, 1) 100%)" }}>
+                            <div className='col-lg-5 d-flex align-items-center' style={{ background: "linear-gradient(24deg, rgba(34, 87, 122, 1) 0%, rgba(56, 163, 165, 1) 35%, rgba(87, 204, 153, 1) 79%, rgba(128, 237, 153, 1) 100%)" }}>
                             </div>
-                            <div className='col-lg-6'>
-                                <div className='card-body p-md-5 mx-md-4'>
+                            <div className='col-7'>
+                                <div className='card-body p-md-6 mx-md-6'>
                                     <h1 className='mt-1 mb-5 pb-1'> Bounty Board</h1>
                                     <form onSubmit={handleRegister}>
                                         <p> Create Account</p>
-                                        <div className='form-outline mb-4'>
+                                        <div className='form-outline mb-1'>
                                             <input type="text" 
                                                 className="form-control"
                                                 placeholder="Name"
                                                 onChange={(e)=>setName(e.target.value)}/>
                                         </div>
-                                        <div className='form-outline mb-4'>
+                                        <div className='form-outline mb-1'>
                                             <input type="email" 
                                                 className="form-control"
                                                 placeholder="Email address"
                                                 onChange={(e)=>setEmail(e.target.value)} />
                                         </div>
-                                        <div className='form-outline mb-4'>
+                                        <div className='form-outline mb-1'>
                                             <input type="password" 
                                                 className="form-control"
                                                 placeholder="Password"
                                                 onChange={(e)=>setPassword(e.target.value)} />
                                         </div>
-                                        <div className="form-outline mb-4">
+                                        <div className="form-outline mb-1">
                                             <input type="password" 
                                                 className="form-control"
                                                 placeholder="Confirm Password"
@@ -82,7 +82,8 @@ const SignUp = () => {
                                             <button className="btn btn-primary">Sign Up</button>
                                         </div>
                                         <div className="d-flex align-items-center justify-content-center pb-4">
-                                            <Link to='/login' className="mb-0 me-2">Already Registered? - Login</Link>
+                                            <p className="mb-0 me-2">Already Registered?</p>
+                                            <button onClick={() => navigate('/login')} className="btn btn-danger text-white">Login</button>
                                         </div>
                                     </form>
                                 </div>
