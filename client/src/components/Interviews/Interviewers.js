@@ -7,6 +7,7 @@ import Navbar from '../Navbar';
 const Interviewers = () => {
     const navigate = useNavigate();
     const [interviewList, setInterviewList] = useState([]);
+    
 
     useEffect(()=> {
         axios.get('http://localhost:8000/api/interviews')
@@ -15,6 +16,7 @@ const Interviewers = () => {
                 setInterviewList(res.data)
             })
             .catch((error)=> {
+                
                 console.log(error)
             })
     }, [])
@@ -58,7 +60,9 @@ const Interviewers = () => {
                                 return <tr key={item._id}>
                                         <td>{item.interviewerName}, {item.interviewerTitle}</td>
                                         <td>{item.interviewDate}</td>
+                                        
                                         <td>{item.companyName}</td>
+                                    
                                         <td>{item.email}</td>
                                         <td>{item.phoneNumber}</td>
                                         <td>

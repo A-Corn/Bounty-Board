@@ -10,9 +10,12 @@ const InterviewForms = () => {
     const [interviewDate, setInterviewDate] = useState("");
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
+    const [err, setErr] = useState({})
+    
 
     const submitForm = (e) => {
         e.preventDefault();
+        
         const formInfo = { interviewerName, interviewerTitle, companyName, interviewDate, email, phoneNumber }
         
         axios.post("http://localhost:8000/api/interviews", formInfo)
@@ -22,6 +25,7 @@ const InterviewForms = () => {
             })
             .catch((err) => {
                 console.log(err)
+                setErr(err.response.data.errors)
             })
         // Clear out form information after  submitting the form 
         setInterviewerName("");
@@ -52,6 +56,10 @@ const InterviewForms = () => {
                             onChange={(e) => setInterviewerTitle(e.target.value)}
                             value={interviewerTitle}
                         />
+                        {
+                                            err.interviewDate?
+                                            <p className='text-light'>{err.interviewDate.message}</p>:null
+                                        }
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Company Name </label>
@@ -60,6 +68,10 @@ const InterviewForms = () => {
                             onChange={(e) => setCompanyName(e.target.value)}
                             value={companyName}
                         />
+                          {
+                                            err.companyName?
+                                            <p className='text-light'>{err.companyName.message}</p>:null
+                                        }
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Interview Date </label>
