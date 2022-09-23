@@ -57,9 +57,9 @@ const InterviewForms = () => {
                             value={interviewerTitle}
                         />
                         {
-                                            err.interviewDate?
-                                            <p className='text-light'>{err.interviewDate.message}</p>:null
-                                        }
+                            err.interviewDate?
+                            <p className='text-light'>{err.interviewDate.message}</p>:null
+                        }
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Company Name </label>
@@ -69,9 +69,9 @@ const InterviewForms = () => {
                             value={companyName}
                         />
                           {
-                                            err.companyName?
-                                            <p className='text-light'>{err.companyName.message}</p>:null
-                                        }
+                            err.companyName?
+                            <p className='text-light'>{err.companyName.message}</p>:null
+                          }
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Interview Date </label>
